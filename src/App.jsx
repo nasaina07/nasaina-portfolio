@@ -15,8 +15,8 @@ import {
   X
 } from 'lucide-react';
 
-// Importation de votre photo de profil
-import profileImg from './assets/profile.png';
+// Importation de votre photo avec l'extension .jpg
+import profileImg from './assets/profile.jpg';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('all');
@@ -143,7 +143,7 @@ export default function App() {
         )}
       </nav>
 
-      {/* Hero Section avec Photo Responsive */}
+      {/* Hero Section avec Photo Responsive (.jpg) */}
       <section id="about" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-24">
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
           
@@ -436,7 +436,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-6 border-t border-slate-900 text-center text-xs text-slate-600 font-mono px-4">
-        © 2026 Nasaina Cécile Razafindrasendra — Administratrice Systèmes & Réseaux
+        © 2026 Nasaina Cécile Razafindrasendra — Administrateur Systèmes & Réseaux
       </footer>
 
     </div>
