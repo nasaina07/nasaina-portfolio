@@ -10,11 +10,17 @@ import {
   Code2, 
   GraduationCap, 
   CheckCircle, 
-  Layers
+  Layers,
+  Menu,
+  X
 } from 'lucide-react';
+
+// Importation de votre photo de profil
+import profileImg from './assets/profile.png';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('all');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [terminalInput, setTerminalInput] = useState('');
   const [terminalLogs, setTerminalLogs] = useState([
     "Bienvenue sur le système d'administration de Nasaina.",
@@ -100,12 +106,14 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-cyan-500 selection:text-slate-900">
       
-      {/* Navigation */}
-      <nav className="sticky top-0 z-50 bg-slate-900/80 backdrop-blur-md border-b border-slate-800">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="#" className="font-bold text-white text-lg tracking-tight hover:text-cyan-400 transition">
+      {/* Navigation Responsive */}
+      <nav className="sticky top-0 z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-800">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+          <a href="#" className="font-bold text-white text-base sm:text-lg tracking-tight hover:text-cyan-400 transition">
             Nasaina Razafindrasendra
           </a>
+
+          {/* Menu Desktop */}
           <div className="hidden md:flex gap-6 text-sm font-medium text-slate-300">
             <a href="#about" className="hover:text-cyan-400 transition">À Propos</a>
             <a href="#skills" className="hover:text-cyan-400 transition">Compétences</a>
@@ -113,56 +121,92 @@ export default function App() {
             <a href="#terminal" className="hover:text-cyan-400 transition">Terminal</a>
             <a href="#contact" className="hover:text-cyan-400 transition">Contact</a>
           </div>
+
+          {/* Bouton Hamburger Mobile */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden text-slate-300 hover:text-white focus:outline-none p-1"
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
         </div>
+
+        {/* Menu Déroulant Mobile */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-slate-950 border-b border-slate-800 px-4 pt-2 pb-4 space-y-3 text-sm font-medium">
+            <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-cyan-400">À Propos</a>
+            <a href="#skills" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-cyan-400">Compétences</a>
+            <a href="#projects" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-cyan-400">Projets</a>
+            <a href="#terminal" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-cyan-400">Terminal</a>
+            <a href="#contact" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-cyan-400">Contact</a>
+          </div>
+        )}
       </nav>
 
-      {/* Hero Section */}
-      <section id="about" className="max-w-4xl mx-auto px-4 py-24 flex flex-col items-center text-center">
-        <div className="space-y-6">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-800 text-cyan-400 text-xs font-mono">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-            Administration Systèmes & Réseaux
+      {/* Hero Section avec Photo Responsive */}
+      <section id="about" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-24">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
+          
+          {/* Photo de profil */}
+          <div className="relative group w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 flex-shrink-0">
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
+            <img 
+              src={profileImg} 
+              alt="Nasaina Cécile Razafindrasendra" 
+              className="relative w-full h-full object-cover rounded-full border-2 border-slate-800 shadow-2xl"
+            />
           </div>
-          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-white">
-            Nasaina Cécile <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-              Razafindrasendra
-            </span>
-          </h1>
-          <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">
-            Étudiante en troisième année d'informatique, spécialisée dans la gestion des infrastructures systèmes, la surveillance des réseaux et la sécurité informatique.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 pt-4">
-            <a href="#projects" className="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold rounded-lg transition flex items-center gap-2">
-              <Layers className="w-4 h-4" /> Voir mes projets
-            </a>
-            <a href="#contact" className="px-6 py-3 border border-slate-700 hover:border-slate-500 text-slate-300 rounded-lg transition flex items-center gap-2">
-              <Mail className="w-4 h-4" /> Me contacter
-            </a>
+
+          {/* Présentation */}
+          <div className="space-y-6 text-center md:text-left flex-1">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-800 text-cyan-400 text-xs font-mono">
+              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              Administration Systèmes & Réseaux
+            </div>
+            
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
+              Nasaina Cécile <br className="hidden sm:inline" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+                Razafindrasendra
+              </span>
+            </h1>
+
+            <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
+              Étudiante en troisième année d'informatique, spécialisée dans la gestion des infrastructures systèmes, la surveillance des réseaux et la sécurité informatique.
+            </p>
+
+            <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
+              <a href="#projects" className="px-5 py-2.5 sm:px-6 sm:py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm sm:text-base rounded-lg transition flex items-center gap-2">
+                <Layers className="w-4 h-4" /> Voir mes projets
+              </a>
+              <a href="#contact" className="px-5 py-2.5 sm:px-6 sm:py-3 border border-slate-700 hover:border-slate-500 text-slate-300 text-sm sm:text-base rounded-lg transition flex items-center gap-2">
+                <Mail className="w-4 h-4" /> Me contacter
+              </a>
+            </div>
           </div>
+
         </div>
       </section>
 
       {/* Compétences */}
       <section id="skills" className="py-16 bg-slate-950/50 border-y border-slate-800/80">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-2 mb-12">
-            <h2 className="text-3xl font-bold text-white">Compétences Techniques</h2>
-            <p className="text-slate-400">Aperçu de mes capacités en gestion d'infrastructures et développement</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Compétences Techniques</h2>
+            <p className="text-slate-400 text-sm sm:text-base">Aperçu de mes capacités en gestion d'infrastructures et développement</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            
             <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl space-y-4">
               <div className="w-12 h-12 bg-cyan-950 border border-cyan-800 rounded-lg flex items-center justify-center text-cyan-400">
                 <Server className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-white">Systèmes & Réseaux</h3>
               <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Administration Linux & Windows</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Services réseau fondamentaux</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Virtualisation</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Tests ICMP & Monitoring</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Administration Linux & Windows</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Services réseau fondamentaux</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Virtualisation</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Tests ICMP & Monitoring</li>
               </ul>
             </div>
 
@@ -172,10 +216,10 @@ export default function App() {
               </div>
               <h3 className="text-xl font-semibold text-white">Sécurité & Supervision</h3>
               <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Surveillance du réseau</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Détection d'intrusions (Arpwatch)</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Analyse d'usurpation (Arpspoof)</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Analyse IP / MAC</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Surveillance du réseau</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Détection d'intrusions (Arpwatch)</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Analyse d'usurpation (Arpspoof)</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Analyse IP / MAC</li>
               </ul>
             </div>
 
@@ -185,26 +229,25 @@ export default function App() {
               </div>
               <h3 className="text-xl font-semibold text-white">Développement & Data</h3>
               <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Création d'applications Web</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Scripts Python & API PHP</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Bases de données MySQL</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400" /> Modélisation & Stockage</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Création d'applications Web</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Scripts Python & API PHP</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Bases de données MySQL</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Modélisation & Stockage</li>
               </ul>
             </div>
-
           </div>
         </div>
       </section>
 
       {/* Projets */}
-      <section id="projects" className="py-20 max-w-6xl mx-auto px-4">
+      <section id="projects" className="py-20 max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <h2 className="text-3xl font-bold text-white">Projets & Réalisations</h2>
-            <p className="text-slate-400">Mes travaux pratiques et projets d'ingénierie</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Projets & Réalisations</h2>
+            <p className="text-slate-400 text-sm sm:text-base">Mes travaux pratiques et projets d'ingénierie</p>
           </div>
 
-          <div className="flex gap-2 bg-slate-950 p-1 border border-slate-800 rounded-lg text-xs font-medium">
+          <div className="flex flex-wrap gap-2 bg-slate-950 p-1 border border-slate-800 rounded-lg text-xs font-medium self-start md:self-auto">
             <button 
               onClick={() => setActiveTab('all')}
               className={`px-3 py-1.5 rounded-md transition ${activeTab === 'all' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}>
@@ -261,10 +304,10 @@ export default function App() {
         </div>
       </section>
 
-      {/* Terminal de commande interactif */}
+      {/* Terminal */}
       <section id="terminal" className="py-16 bg-slate-950 border-t border-slate-800">
-        <div className="max-w-4xl mx-auto px-4">
-          <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl font-mono text-sm">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6">
+          <div className="bg-slate-900 border border-slate-800 rounded-xl overflow-hidden shadow-2xl font-mono text-xs sm:text-sm">
             <div className="bg-slate-950 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Terminal className="w-4 h-4 text-cyan-400" />
@@ -282,13 +325,13 @@ export default function App() {
             </div>
 
             <form onSubmit={handleCommand} className="border-t border-slate-800 p-3 bg-slate-950/80 flex items-center gap-2">
-              <span className="text-cyan-400 font-bold text-xs">nasaina@admin:~$</span>
+              <span className="text-cyan-400 font-bold text-xs shrink-0">nasaina@admin:~$</span>
               <input 
                 type="text" 
                 value={terminalInput}
                 onChange={(e) => setTerminalInput(e.target.value)}
                 placeholder="Tapez 'help', 'skills', 'projects'..." 
-                className="bg-transparent border-none outline-none flex-1 text-slate-100 text-sm font-mono focus:ring-0"
+                className="bg-transparent border-none outline-none flex-1 text-slate-100 text-xs sm:text-sm font-mono focus:ring-0"
               />
             </form>
           </div>
@@ -296,7 +339,7 @@ export default function App() {
       </section>
 
       {/* Formations & Langues */}
-      <section className="py-20 max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
+      <section className="py-20 max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         
         {/* Parcours Académique */}
         <div className="space-y-6">
@@ -355,12 +398,12 @@ export default function App() {
 
       </section>
 
-      {/* Section Contact */}
+      {/* Contact */}
       <section id="contact" className="py-20 bg-slate-950 border-t border-slate-800">
-        <div className="max-w-6xl mx-auto px-4">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-2 mb-12">
-            <h2 className="text-3xl font-bold text-white">Me Contacter</h2>
-            <p className="text-slate-400">Restons en contact pour échanger sur vos projets informatiques</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Me Contacter</h2>
+            <p className="text-slate-400 text-sm sm:text-base">Restons en contact pour échanger sur vos projets informatiques</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -392,8 +435,8 @@ export default function App() {
       </section>
 
       {/* Footer */}
-      <footer className="py-6 border-t border-slate-900 text-center text-xs text-slate-600 font-mono">
-        © 2026 Nasaina Cécile Razafindrasendra — Admnistratrice Systèmes & Réseaux
+      <footer className="py-6 border-t border-slate-900 text-center text-xs text-slate-600 font-mono px-4">
+        © 2026 Nasaina Cécile Razafindrasendra — Administratrice Systèmes & Réseaux
       </footer>
 
     </div>
