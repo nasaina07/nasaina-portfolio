@@ -436,7 +436,7 @@ export default function App() {
 
       {/* Footer */}
       <footer className="py-6 border-t border-slate-900 text-center text-xs text-slate-600 font-mono px-4">
-        © 2026 Nasaina Cécile Razafindrasendra — Administrateur Systèmes & Réseaux
+        © 2026 Nasaina Cécile Razafindrasendra — Administratrice Systèmes & Réseaux
       </footer>
 
     </div>
