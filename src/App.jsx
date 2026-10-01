@@ -11,11 +11,11 @@ import {
   GraduationCap, 
   CheckCircle, 
   Layers,
+  Heart,
   Menu,
   X
 } from 'lucide-react';
 
-// Importation de votre photo avec l'extension .jpg
 import profileImg from './assets/profile.jpg';
 
 export default function App() {
@@ -37,13 +37,13 @@ export default function App() {
         newLogs.push("Commandes disponibles : status, skills, projects, contact, clear");
         break;
       case 'status':
-        newLogs.push("Système : En ligne | Rôle : Administration Systèmes & Réseaux");
+        newLogs.push("Système : En ligne | Rôle : Informatique, Développement, Systèmes et Réseaux");
         break;
       case 'skills':
-        newLogs.push("Compétences : Linux, Windows Server, Arpwatch, Arpspoof, MySQL, Python, PHP");
+        newLogs.push("Compétences : Python, PHP, JavaScript, React, Node.js, Express, MySQL, MongoDB, Linux");
         break;
       case 'projects':
-        newLogs.push("Projets : Supervision Parc Informatique, Détection Attaques Réseau, Support ADS360");
+        newLogs.push("Projets : Suivi de dépenses, Supervision de parc, Détection d'attaques réseau");
         break;
       case 'contact':
         newLogs.push("E-mail : nasaina710@gmail.com | Tél : +261 38 11 348 37");
@@ -63,22 +63,34 @@ export default function App() {
 
   const projects = [
     {
-      title: "Supervision de Parc Informatique",
-      category: "reseau",
+      title: "Application de suivi de dépenses",
+      category: "dev",
       date: "2026",
-      desc: "Conception et mise en place d'un outil de monitoring de réseau avec alertes de connectivité et suivi d'équipements.",
-      techs: ["Python", "API PHP", "MySQL", "Ping ICMP"],
+      desc: "Conception d'une application web de gestion financière avec React, Tailwind CSS, Node.js et Express.",
+      techs: ["React", "Tailwind CSS", "Node.js", "Express", "MongoDB Atlas"],
       details: [
-        "Création d'un outil client Python relié à une API PHP.",
-        "Tests de connectivité par Ping ICMP en temps réel.",
-        "Stockage et gestion des données d'équipements sous MySQL."
+        "Développement complet du frontend avec React et Tailwind CSS.",
+        "Configuration et gestion d'une base de données MongoDB Atlas dans le cloud.",
+        "Déploiement automatisé du frontend sur Vercel et du backend sur Render."
       ]
     },
     {
-      title: "Détection d'Attaques Réseau",
+      title: "Outil de supervision de parc informatique",
+      category: "reseau",
+      date: "2026",
+      desc: "Conception et mise en place d'un outil de monitoring réseau avec suivi d'équipements et alertes de connectivité.",
+      techs: ["Python", "API PHP", "MySQL", "Ping ICMP"],
+      details: [
+        "Création d'un outil client en Python relié à une API en PHP.",
+        "Tests de connectivité par Ping ICMP en temps réel.",
+        "Stockage des données d'équipements sous MySQL."
+      ]
+    },
+    {
+      title: "Détection d'attaques réseau",
       category: "securite",
       date: "2026",
-      desc: "Mise en place d'un système de surveillance et de détection d'usurpation d'adresse MAC/IP sur un réseau local.",
+      desc: "Mise en place d'un système de surveillance et de détection d'usurpation d'adresse MAC et IP sur un réseau local.",
       techs: ["Arpwatch", "Arpspoof", "Linux", "Analyse IP/MAC"],
       details: [
         "Déploiement d'Arpwatch pour l'analyse des adresses IP et MAC.",
@@ -87,14 +99,14 @@ export default function App() {
       ]
     },
     {
-      title: "Support et Supervision Réseau",
+      title: "Support et supervision réseau",
       category: "systeme",
       date: "2025",
       desc: "Gestion de la diffusion distante de contenus et maintenance d'un parc d'affichage dynamique.",
-      techs: ["Support Réseau", "Surveillance", "Panne / Diagnostic"],
+      techs: ["Support Réseau", "Surveillance", "ADS360"],
       details: [
         "Programmation et diffusion de contenus sur écrans distants.",
-        "Surveillance continue du réseau d'affichage et détection des pannes."
+        "Surveillance du réseau d'affichage et détection des pannes."
       ]
     }
   ];
@@ -113,7 +125,6 @@ export default function App() {
             Nasaina Razafindrasendra
           </a>
 
-          {/* Menu Desktop */}
           <div className="hidden md:flex gap-6 text-sm font-medium text-slate-300">
             <a href="#about" className="hover:text-cyan-400 transition">À Propos</a>
             <a href="#skills" className="hover:text-cyan-400 transition">Compétences</a>
@@ -122,7 +133,6 @@ export default function App() {
             <a href="#contact" className="hover:text-cyan-400 transition">Contact</a>
           </div>
 
-          {/* Bouton Hamburger Mobile */}
           <button 
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             className="md:hidden text-slate-300 hover:text-white focus:outline-none p-1"
@@ -131,7 +141,6 @@ export default function App() {
           </button>
         </div>
 
-        {/* Menu Déroulant Mobile */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-slate-950 border-b border-slate-800 px-4 pt-2 pb-4 space-y-3 text-sm font-medium">
             <a href="#about" onClick={() => setMobileMenuOpen(false)} className="block text-slate-300 hover:text-cyan-400">À Propos</a>
@@ -143,11 +152,10 @@ export default function App() {
         )}
       </nav>
 
-      {/* Hero Section avec Photo Responsive (.jpg) */}
+      {/* Hero Section */}
       <section id="about" className="max-w-6xl mx-auto px-4 sm:px-6 py-12 md:py-24">
         <div className="flex flex-col md:flex-row items-center justify-between gap-10 md:gap-12">
           
-          {/* Photo de profil */}
           <div className="relative group w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 flex-shrink-0">
             <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-full blur opacity-50 group-hover:opacity-75 transition duration-500"></div>
             <img 
@@ -157,11 +165,10 @@ export default function App() {
             />
           </div>
 
-          {/* Présentation */}
           <div className="space-y-6 text-center md:text-left flex-1">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-950/60 border border-cyan-800 text-cyan-400 text-xs font-mono">
               <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              Administration Systèmes & Réseaux
+              Développement, Systèmes et Réseaux
             </div>
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
@@ -172,7 +179,7 @@ export default function App() {
             </h1>
 
             <p className="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mx-auto md:mx-0">
-              Étudiante en troisième année d'informatique, spécialisée dans la gestion des infrastructures systèmes, la surveillance des réseaux et la sécurité informatique.
+              Étudiante en troisième année d'informatique à l'Université Privée HAY, à l'aise aussi bien en développement d'applications qu'en administration des systèmes et réseaux.
             </p>
 
             <div className="flex flex-wrap justify-center md:justify-start gap-4 pt-2">
@@ -193,20 +200,35 @@ export default function App() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-2 mb-12">
             <h2 className="text-2xl sm:text-3xl font-bold text-white">Compétences Techniques</h2>
-            <p className="text-slate-400 text-sm sm:text-base">Aperçu de mes capacités en gestion d'infrastructures et développement</p>
+            <p className="text-slate-400 text-sm sm:text-base">Aperçu de mes savoir-faire en développement et gestion d'infrastructures</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl space-y-4">
+              <div className="w-12 h-12 bg-cyan-950 border border-cyan-800 rounded-lg flex items-center justify-center text-cyan-400">
+                <Code2 className="w-6 h-6" />
+              </div>
+              <h3 className="text-xl font-semibold text-white">Développement</h3>
+              <ul className="space-y-2 text-slate-300 text-sm">
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Python, PHP, JavaScript</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> React, Tailwind CSS, Node.js, Express</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Création d'applications Web et d'API</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Bases de données MySQL et MongoDB</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Git, GitHub, Vercel et Render</li>
+              </ul>
+            </div>
+
             <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl space-y-4">
               <div className="w-12 h-12 bg-cyan-950 border border-cyan-800 rounded-lg flex items-center justify-center text-cyan-400">
                 <Server className="w-6 h-6" />
               </div>
               <h3 className="text-xl font-semibold text-white">Systèmes & Réseaux</h3>
               <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Administration Linux & Windows</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Services réseau fondamentaux</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Serveurs Linux et Windows</li>
                 <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Virtualisation</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Tests ICMP & Monitoring</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Services réseau fondamentaux</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Surveillance des réseaux</li>
               </ul>
             </div>
 
@@ -214,27 +236,14 @@ export default function App() {
               <div className="w-12 h-12 bg-cyan-950 border border-cyan-800 rounded-lg flex items-center justify-center text-cyan-400">
                 <ShieldCheck className="w-6 h-6" />
               </div>
-              <h3 className="text-xl font-semibold text-white">Sécurité & Supervision</h3>
+              <h3 className="text-xl font-semibold text-white">Sécurité</h3>
               <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Surveillance du réseau</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Détection d'intrusions (Arpwatch)</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Analyse d'usurpation (Arpspoof)</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Analyse IP / MAC</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Détection d'attaques réseau</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Analyse des alertes d'intrusion</li>
+                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Surveillance des adresses IP et MAC</li>
               </ul>
             </div>
 
-            <div className="bg-slate-900 border border-slate-800 p-6 rounded-xl space-y-4">
-              <div className="w-12 h-12 bg-cyan-950 border border-cyan-800 rounded-lg flex items-center justify-center text-cyan-400">
-                <Code2 className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-semibold text-white">Développement & Data</h3>
-              <ul className="space-y-2 text-slate-300 text-sm">
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Création d'applications Web</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Scripts Python & API PHP</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Bases de données MySQL</li>
-                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-cyan-400 flex-shrink-0" /> Modélisation & Stockage</li>
-              </ul>
-            </div>
           </div>
         </div>
       </section>
@@ -244,7 +253,7 @@ export default function App() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <h2 className="text-2xl sm:text-3xl font-bold text-white">Projets & Réalisations</h2>
-            <p className="text-slate-400 text-sm sm:text-base">Mes travaux pratiques et projets d'ingénierie</p>
+            <p className="text-slate-400 text-sm sm:text-base">Mes travaux académiques et réalisations pratiques</p>
           </div>
 
           <div className="flex flex-wrap gap-2 bg-slate-950 p-1 border border-slate-800 rounded-lg text-xs font-medium self-start md:self-auto">
@@ -252,6 +261,11 @@ export default function App() {
               onClick={() => setActiveTab('all')}
               className={`px-3 py-1.5 rounded-md transition ${activeTab === 'all' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}>
               Tous
+            </button>
+            <button 
+              onClick={() => setActiveTab('dev')}
+              className={`px-3 py-1.5 rounded-md transition ${activeTab === 'dev' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}>
+              Développement
             </button>
             <button 
               onClick={() => setActiveTab('reseau')}
@@ -263,15 +277,10 @@ export default function App() {
               className={`px-3 py-1.5 rounded-md transition ${activeTab === 'securite' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}>
               Sécurité
             </button>
-            <button 
-              onClick={() => setActiveTab('systeme')}
-              className={`px-3 py-1.5 rounded-md transition ${activeTab === 'systeme' ? 'bg-cyan-500 text-slate-950' : 'text-slate-400 hover:text-white'}`}>
-              Système
-            </button>
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {filteredProjects.map((project, idx) => (
             <div key={idx} className="bg-slate-950 border border-slate-800 hover:border-slate-700 rounded-xl p-6 flex flex-col justify-between transition">
               <div className="space-y-4">
@@ -280,9 +289,9 @@ export default function App() {
                     {project.date}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-white">{project.title}</h3>
+                <h3 className="text-xl font-bold text-white">{project.title}</h3>
                 <p className="text-slate-400 text-sm">{project.desc}</p>
-                <ul className="space-y-1 text-xs text-slate-300">
+                <ul className="space-y-1.5 text-xs text-slate-300">
                   {project.details.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <span className="text-cyan-400 font-bold">•</span>
@@ -311,7 +320,7 @@ export default function App() {
             <div className="bg-slate-950 px-4 py-3 border-b border-slate-800 flex items-center justify-between">
               <div className="flex items-center gap-2">
                 <Terminal className="w-4 h-4 text-cyan-400" />
-                <span className="text-slate-300 font-semibold text-xs">Console Admin (Interactif)</span>
+                <span className="text-slate-300 font-semibold text-xs">Console Admin</span>
               </div>
               <span className="text-xs text-slate-600">bash v5.2</span>
             </div>
@@ -338,28 +347,21 @@ export default function App() {
         </div>
       </section>
 
-      {/* Formations & Langues */}
+      {/* Formations, Langues et Centres d'intérêt */}
       <section className="py-20 max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-2 gap-12">
         
         {/* Parcours Académique */}
         <div className="space-y-6">
           <div className="flex items-center gap-3">
             <GraduationCap className="w-6 h-6 text-cyan-400" />
-            <h2 className="text-2xl font-bold text-white">Parcours Académique</h2>
+            <h2 className="text-2xl font-bold text-white">Formations</h2>
           </div>
 
           <div className="space-y-6 border-l-2 border-slate-800 pl-6">
             <div className="relative space-y-1">
               <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-cyan-400"></div>
-              <span className="text-xs font-mono text-cyan-400">2026 (En cours)</span>
+              <span className="text-xs font-mono text-cyan-400">2026</span>
               <h3 className="text-lg font-bold text-white">Licence en Informatique</h3>
-              <p className="text-sm text-slate-400">Université Privée HAY</p>
-            </div>
-
-            <div className="relative space-y-1">
-              <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
-              <span className="text-xs font-mono text-slate-500">2025</span>
-              <h3 className="text-lg font-bold text-white">DTS en Informatique</h3>
               <p className="text-sm text-slate-400">Université Privée HAY</p>
             </div>
 
@@ -372,7 +374,7 @@ export default function App() {
           </div>
         </div>
 
-        {/* Langues */}
+        {/* Langues & Centres d'intérêt */}
         <div className="space-y-8">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
@@ -394,6 +396,18 @@ export default function App() {
               </div>
             </div>
           </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <Heart className="w-6 h-6 text-cyan-400" />
+              <h2 className="text-2xl font-bold text-white">Centres d'intérêt</h2>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-4 py-2 bg-slate-950 border border-slate-800 text-slate-300 rounded-lg text-sm">Voyage</span>
+              <span className="px-4 py-2 bg-slate-950 border border-slate-800 text-slate-300 rounded-lg text-sm">Danse</span>
+              <span className="px-4 py-2 bg-slate-950 border border-slate-800 text-slate-300 rounded-lg text-sm">Musique</span>
+            </div>
+          </div>
         </div>
 
       </section>
@@ -407,36 +421,56 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
-            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 text-center space-y-3">
-              <div className="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-full flex items-center justify-center mx-auto">
+            
+            {/* WhatsApp */}
+            <a 
+              href="https://wa.me/261381134837" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-slate-900 hover:bg-slate-800/80 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/50 text-center space-y-3 transition group"
+            >
+              <div className="w-10 h-10 bg-cyan-950 text-cyan-400 group-hover:scale-110 rounded-full flex items-center justify-center mx-auto transition">
                 <Phone className="w-5 h-5" />
               </div>
-              <p className="text-xs text-slate-500 font-mono">Téléphone</p>
-              <p className="text-white font-medium text-sm">+261 38 11 348 37</p>
-            </div>
+              <p className="text-xs text-slate-500 font-mono">Téléphone / WhatsApp</p>
+              <p className="text-white font-medium text-sm group-hover:text-cyan-400 transition">+261 38 11 348 37</p>
+            </a>
 
-            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 text-center space-y-3">
-              <div className="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-full flex items-center justify-center mx-auto">
+            {/* E-mail vers Gmail Web */}
+            <a 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=nasaina710@gmail.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-slate-900 hover:bg-slate-800/80 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/50 text-center space-y-3 transition group"
+            >
+              <div className="w-10 h-10 bg-cyan-950 text-cyan-400 group-hover:scale-110 rounded-full flex items-center justify-center mx-auto transition">
                 <Mail className="w-5 h-5" />
               </div>
               <p className="text-xs text-slate-500 font-mono">Adresse E-mail</p>
-              <p className="text-white font-medium text-sm">nasaina710@gmail.com</p>
-            </div>
+              <p className="text-white font-medium text-sm group-hover:text-cyan-400 transition">nasaina710@gmail.com</p>
+            </a>
 
-            <div className="bg-slate-900 p-6 rounded-xl border border-slate-800 text-center space-y-3">
-              <div className="w-10 h-10 bg-cyan-950 text-cyan-400 rounded-full flex items-center justify-center mx-auto">
+            {/* Google Maps */}
+            <a 
+              href="https://maps.google.com/?q=Ambohijanaka,+Madagascar" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-slate-900 hover:bg-slate-800/80 p-6 rounded-xl border border-slate-800 hover:border-cyan-500/50 text-center space-y-3 transition group"
+            >
+              <div className="w-10 h-10 bg-cyan-950 text-cyan-400 group-hover:scale-110 rounded-full flex items-center justify-center mx-auto transition">
                 <MapPin className="w-5 h-5" />
               </div>
               <p className="text-xs text-slate-500 font-mono">Adresse</p>
-              <p className="text-white font-medium text-sm">A 31 Ambohijanaka</p>
-            </div>
+              <p className="text-white font-medium text-sm group-hover:text-cyan-400 transition">A 31 Ambohijanaka</p>
+            </a>
+
           </div>
         </div>
       </section>
 
       {/* Footer */}
       <footer className="py-6 border-t border-slate-900 text-center text-xs text-slate-600 font-mono px-4">
-        © 2026 Nasaina Cécile Razafindrasendra — Administrateur Systèmes & Réseaux
+        © 2026 Nasaina Cécile Razafindrasendra — Étudiante en Informatique
       </footer>
 
     </div>
