@@ -441,7 +441,7 @@ export default function App() {
       <section id="contact" className="py-20 bg-slate-950 border-t border-slate-800">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="text-center space-y-2 mb-12">
-            <h2 className="text-2xl sm:text-3xl font-bold text-white">Me Contacter & Réseaux</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-white">Contacts & Réseaux</h2>
             <p className="text-slate-400 text-sm sm:text-base">Retrouvez-moi sur mes différentes plateformes ou contactez-moi directement</p>
           </div>
 
