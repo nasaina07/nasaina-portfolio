@@ -211,8 +211,8 @@ export default function App() {
               <a href="#projects" className="px-5 py-2.5 sm:px-6 sm:py-3 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm sm:text-base rounded-lg transition flex items-center gap-2">
                 <Layers className="w-4 h-4" /> Voir mes projets
               </a>
-              <a href="https://www.linkedin.com/in/nasaina-razafindrasendra-717208384" target="_blank" rel="noopener noreferrer" className="px-5 py-2.5 sm:px-6 sm:py-3 border border-slate-700 hover:border-slate-500 text-slate-300 text-sm sm:text-base rounded-lg transition flex items-center gap-2">
-                <LinkedinIcon className="w-4 h-4 text-cyan-400" /> LinkedIn
+              <a href="#contact" className="px-5 py-2.5 sm:px-6 sm:py-3 border border-slate-700 hover:border-slate-500 text-slate-300 text-sm sm:text-base rounded-lg transition flex items-center gap-2">
+                <Mail className="w-4 h-4 text-cyan-400" /> Me contacter
               </a>
             </div>
           </div>
