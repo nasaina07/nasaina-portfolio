@@ -393,7 +393,7 @@ export default function App() {
             <div className="relative space-y-1">
               <div className="absolute -left-[31px] top-1.5 w-3 h-3 rounded-full bg-slate-700"></div>
               <span className="text-xs font-mono text-slate-500">2023</span>
-              <h3 className="text-lg font-bold text-white">Baccalauréat série C</h3>
+              <h3 className="text-lg font-bold text-white">Baccalauréat série D</h3>
               <p className="text-sm text-slate-400">Lycée Saint Pierre Malaza</p>
             </div>
           </div>
