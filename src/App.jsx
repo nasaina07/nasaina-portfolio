@@ -197,7 +197,7 @@ export default function App() {
             </div>
             
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-white leading-tight">
-              Nasaina Cécile <br className="hidden sm:inline" />
+              Nasaina <br className="hidden sm:inline" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
                 Razafindrasendra
               </span>
